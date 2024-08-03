@@ -1,0 +1,46 @@
+
+<div class="container">
+    <button mat-raised-button (click)="onCreate()" class="addCourseButton">Add Course</button>
+    <mat-form-field appearance="outline" class="search-bar">
+      <input matInput placeholder="Search by Course name, Location, Start Date..." name="search" [(ngModel)]="searchTerm" (ngModelChange)="onSearch()">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>  
+
+  <mat-table [dataSource]="courses" class="mat-elevation-z8">
+    <!-- Define columns -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Course Name </mat-header-cell>
+      <mat-cell *matCellDef="let course" [matTooltip] ="course.CourseDescription ? course.CourseDescription : null " > 
+        <button mat-button (click)="onEdit(course)">
+            <mat-icon matsuffix>edit</mat-icon>
+        </button>
+        <button mat-button (click)="onDelete(course._id)">
+            <mat-icon matsuffix>close</mat-icon>
+        </button>
+        <span>{{course.CourseName}} </span>
+    </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Location">
+      <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+      <mat-cell *matCellDef="let course" [matTooltip] ="course.CourseDescription ? course.CourseDescription : null "> {{course.City + ',' +course.Country + ',' + course.University}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Start">
+        <mat-header-cell *matHeaderCellDef> Start </mat-header-cell>
+        <mat-cell *matCellDef="let course" [matTooltip] ="course.CourseDescription ? course.CourseDescription : null "> {{course.StartDate}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="Length">
+        <mat-header-cell *matHeaderCellDef> Length </mat-header-cell>
+        <mat-cell *matCellDef="let course" [matTooltip] ="course.CourseDescription ? course.CourseDescription : null "> {{calculateCourseLength(course.StartDate, course.EndDate)}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let course" [matTooltip] ="course.CourseDescription ? course.CourseDescription : null "> {{formatCurrency(course.Price, course.Currency)}} </mat-cell>
+      </ng-container>
+
+    <!-- Header and Row Definitions -->
+    <mat-header-row *matHeaderRowDef="['name', 'Location', 'Start', 'Length', 'Price']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'Location', 'Start', 'Length', 'Price'];" ></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="totalCourses" [pageSize]="perPage" (page)="onPageChange($event)"></mat-paginator>

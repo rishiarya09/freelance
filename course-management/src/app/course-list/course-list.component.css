@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 16px;
+  }
+  
+  .search-bar {
+    flex: 0 1 500px;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  
+  .addCourseButton {
+    margin-left: 150px;
+  }
+ 
+  
+  .mat-icon-button {
+    margin-right: 8px;
+    padding: 0;
+  }
+  
+  .mat-cell {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mat-cell button + span {
+    margin-left: 0;
+  }

@@ -1,0 +1,14 @@
+.course-container {
+    height: 100%;
+  }
+  
+  mat-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  mat-sidenav-content {
+    margin-top: 56px; /* Adjust if you have a different toolbar height */
+  }
+  

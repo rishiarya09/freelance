@@ -1,0 +1,27 @@
+ form {
+    width: 60%;
+    margin: auto; 
+  }
+
+  mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mat-dialog-actions button {
+    flex: 1;
+    margin: 8px;
+  }
+  button[mat-raised-button] {
+    flex: 1;
+  }
+
+  .currency-price {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .currency-price .mat-form-field {
+    width: 10%; 
+  }
