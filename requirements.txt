@@ -1,0 +1,8 @@
+pandas
+python-dateutil==2.9.0
+flask
+flask-cors==3.0.10
+DateTime==5.2
+APScheduler==3.10.4
+pymongo==4.7.3
+requests==2.31.0
